@@ -23,7 +23,7 @@ public class UserRegistrationTest {
         // WebElement emailInput = driver.findElement(By.className("account_input"));
         // albo zrobić css selector
         WebElement emailInput = driver.findElement(By.cssSelector(".is_required.validate.account_input.form-control"));
-        emailInput.sendKeys("mail213123@asdasf.com");
+        emailInput.sendKeys(GenerateEmail.withTimestamp());
 
         WebElement createAccountButton = driver.findElement(By.name("SubmitCreate"));
         createAccountButton.click();
@@ -48,7 +48,7 @@ public class UserRegistrationTest {
         WebElement secondEmailInput = driver.findElement(By.xpath("//input[@id='email']"));
         secondEmailInput.click();
         secondEmailInput.clear();
-        secondEmailInput.sendKeys("testemail@test.com");
+        secondEmailInput.sendKeys(GenerateEmail.withTimestamp());
 
         WebElement passwordInput = driver.findElement(By.xpath("//input[@id='passwd']"));
         passwordInput.sendKeys("password1");
