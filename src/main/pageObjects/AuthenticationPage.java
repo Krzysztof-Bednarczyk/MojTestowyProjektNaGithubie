@@ -30,5 +30,21 @@ public class AuthenticationPage {
         return new CreateAccountPage(driver);
     }
 
+    public void loginUser(String email, String password){
+        WebElement emailInput = driver.findElement(By.id("email"));
+        emailInput.sendKeys(email);
+
+        WebElement passwordInput = driver.findElement(By.id("passwd"));
+        passwordInput.sendKeys(password);
+
+        WebElement submitButton = driver.findElement(By.id("SubmitLogin"));
+        submitButton.submit();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

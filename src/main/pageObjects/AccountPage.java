@@ -17,5 +17,8 @@ public class AccountPage {
         WebElement myPersonalInformationLink = driver.findElement(By.cssSelector("a[title='Information']"));
         Assertions.assertThat(myPersonalInformationLink.getText()).isEqualTo(expectedText);
     }
+    public String getMyPersonalLinkText(){
+        return driver.findElement(By.cssSelector("a[title='Information']")).getText();
+    }
 
 }
