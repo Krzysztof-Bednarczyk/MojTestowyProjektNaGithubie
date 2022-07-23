@@ -5,6 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import static taskcheckconfig.GenerateEmail.withTimestamp;
+
 public class UserRegistrationTest {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver",
@@ -23,7 +25,7 @@ public class UserRegistrationTest {
         // WebElement emailInput = driver.findElement(By.className("account_input"));
         // albo zrobić css selector
         WebElement emailInput = driver.findElement(By.cssSelector(".is_required.validate.account_input.form-control"));
-        emailInput.sendKeys(GenerateEmail.withTimestamp());
+        emailInput.sendKeys(withTimestamp());
 
         WebElement createAccountButton = driver.findElement(By.name("SubmitCreate"));
         createAccountButton.click();
@@ -48,7 +50,7 @@ public class UserRegistrationTest {
         WebElement secondEmailInput = driver.findElement(By.xpath("//input[@id='email']"));
         secondEmailInput.click();
         secondEmailInput.clear();
-        secondEmailInput.sendKeys(GenerateEmail.withTimestamp());
+        secondEmailInput.sendKeys(withTimestamp());
 
         WebElement passwordInput = driver.findElement(By.xpath("//input[@id='passwd']"));
         passwordInput.sendKeys("password1");
