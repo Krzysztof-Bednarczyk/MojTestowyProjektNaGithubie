@@ -1,5 +1,6 @@
 package taskcheckconfig;
 
+import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -69,5 +70,24 @@ public class UserRegistrationTest {
         // zadanie 5
         WebElement myPersonalInformationLink = driver.findElement(By.cssSelector("a[title='Information']"));
         WebElement myAddressesLink = driver.findElement(By.cssSelector("a[title='Addresses']"));
+
+        WebElement slider = driver.findElement(By.id("slider_row"));
+
+        WebElement iconBuilding = driver.findElement(By.className("icon-building"));
+
+        System.out.println(myPersonalInformationLink.getText()); // drukujemy do konsoli tekst z znalezionego elementu
+        // - tekst jest od razu sformatowany, tak
+        // jak go widzimy na stronie
+        System.out.println(myAddressesLink.getText()); // drukujemy do konsoli tekst z znalezionego elementu
+
+        System.out.println(slider.getAttribute("class")); // drukujemy atrybut elementu slider - atrybut class
+        System.out.println(slider.getTagName()); // drukujemy nazwę tag'a(znacznika) - div
+
+        System.out.println(iconBuilding.isDisplayed() + "  wyświetla się");
+        System.out.println(iconBuilding.isEnabled() + "  jest aktywny");
+        System.out.println(iconBuilding.isSelected() + "  jest zaznaczony");
+
+        Assertions.assertThat(iconBuilding.isDisplayed()).isTrue();
+
     }
 }
