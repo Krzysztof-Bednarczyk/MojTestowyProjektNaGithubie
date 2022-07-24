@@ -3,7 +3,6 @@ package pageobjectpattern;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,6 +24,9 @@ public class RegistrationTest {
 
     private static final String EXPECTED_TEXT = "MY PERSONAL INFORMATION";
     private static final String PASSWORD = "password1";
+    private static final String EXPECTED_BOOKING_MESSAGE = "Room successfully added to your cart";
+    private static final String EXPECTED_MESSAGE_COLOR_RGBA_VALUE = "rgba(70, 167, 78, 1)";
+
 
     private String email;
 
@@ -57,6 +59,12 @@ public class RegistrationTest {
         SearchResultsPage searchResultsPage = homePage.searchForHotel();
         List<WebElement> list = searchResultsPage.getSearchResultList();
         Assertions.assertThat(list).isNotEmpty();
+        searchResultsPage.bookARoom(0); // wybieram pierwszy element z listy przycisków i rezerwuję hotel
+        String bookingMessage = searchResultsPage.getBookingMessage();
+        String messageColor = searchResultsPage.getMessageColor();
+        System.out.println(bookingMessage + "............" + messageColor);
+        Assertions.assertThat(bookingMessage).isEqualTo(EXPECTED_BOOKING_MESSAGE);
+        Assertions.assertThat(messageColor).isEqualTo(EXPECTED_MESSAGE_COLOR_RGBA_VALUE);
     }
     @AfterEach
     void tearDown(){
